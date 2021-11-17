@@ -11,8 +11,10 @@ const initialState = {
   todo: {
     title: "",
     desc: "",
+   
   },
   record: [],
+  active:[],
   toggle: false,
   updatingTodoIndex: null,
 };
@@ -59,7 +61,7 @@ export default function todo(state = initialState, action) {
         ...state,
         record: state.record.map((data) => {
           if (data.id !== action.payload.id) return data;
-          return { ...todo, completed: action.payload.completed };
+          return { ...data, completed: action.payload.completed };
         }),
       };
     default:

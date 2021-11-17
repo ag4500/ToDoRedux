@@ -5,6 +5,7 @@ export const Toggle = "Toggle";
 export const DeleteTodo = "DeleteTodo";
 export const UpdatingtodoIndex = "UpdatingtodoIndex";
 export const CompleteTodo = "CompleteTodo";
+
 export const addtodo = (payload) => ({
   type: AddTodo,
   payload,
@@ -33,3 +34,4 @@ export const completetodo = (payload) => ({
   type: CompleteTodo,
   payload,
 });
+

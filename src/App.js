@@ -7,6 +7,7 @@ import Todo from "./TodoForm";
 function App() {
   const dispatch = useDispatch();
   const select = useSelector((state) => state.todo);
+  console.log(select)
   const handleShowToggle = (id) => {
     if (id === undefined) {
       dispatch(handletoggle(!select.toggle));
@@ -20,7 +21,9 @@ function App() {
     dispatch(deletetodo(id));
   };
   const handleComplete=(e,id)=>{
+    console.log( e.target.checked)
     dispatch(completetodo({ id, completed: e.target.checked }))
+    
   }
   return (
     <div className="App">
