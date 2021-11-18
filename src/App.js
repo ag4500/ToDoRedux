@@ -1,13 +1,18 @@
 import { Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { completetodo,deletetodo, handletoggle, updatingtodoindex } from "./actions/index";
+import {
+  completetodo,
+  deletetodo,
+  handletoggle,
+  updatingtodoindex,
+} from "./actions/index";
 import { Table } from "react-bootstrap";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Todo from "./TodoForm";
-function App() {
+import Footer from "./footer";
+function App(props) {
   const dispatch = useDispatch();
   const select = useSelector((state) => state.todo);
-  console.log(select)
   const handleShowToggle = (id) => {
     if (id === undefined) {
       dispatch(handletoggle(!select.toggle));
@@ -20,11 +25,9 @@ function App() {
   const handleDelete = (id) => {
     dispatch(deletetodo(id));
   };
-  const handleComplete=(e,id)=>{
-    console.log( e.target.checked)
-    dispatch(completetodo({ id, completed: e.target.checked }))
-    
-  }
+  const handleComplete = (e, id) => {
+    dispatch(completetodo({ id, completed: e.target.checked }));
+  };
   return (
     <div className="App">
       <Button
@@ -48,7 +51,7 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {select.record.map((data, index) => (
+          {props.todo.map((data, index) => (
             <tr key={data.id}>
               <td>{index + 1}</td>
               <td>{data.title}</td>
@@ -67,18 +70,19 @@ function App() {
               >
                 Delete Todo
               </Button>
-              <label>
+              <Button variant="outline-warning">
                 complete
                 <input
                   type="checkbox"
                   checked={data.completed}
                   onClick={(event) => handleComplete(event, data.id)}
                 />
-              </label>
+              </Button>
             </tr>
           ))}
         </tbody>
       </Table>
+      <Footer />
     </div>
   );
 }

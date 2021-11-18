@@ -5,7 +5,7 @@ export const Toggle = "Toggle";
 export const DeleteTodo = "DeleteTodo";
 export const UpdatingtodoIndex = "UpdatingtodoIndex";
 export const CompleteTodo = "CompleteTodo";
-
+export const SetVisibilityFilter ="SetVisibilityFilter"
 export const addtodo = (payload) => ({
   type: AddTodo,
   payload,
@@ -34,4 +34,7 @@ export const completetodo = (payload) => ({
   type: CompleteTodo,
   payload,
 });
-
+export const setVisibilityFilter = (filter) => ({
+  type: SetVisibilityFilter,
+  filter
+})

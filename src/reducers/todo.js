@@ -11,10 +11,8 @@ const initialState = {
   todo: {
     title: "",
     desc: "",
-   
   },
   record: [],
-  active:[],
   toggle: false,
   updatingTodoIndex: null,
 };
