@@ -10,5 +10,4 @@ const Footer = () => (
     <FilterLink filter="ShowCompleted">Completed</FilterLink>
   </div>
 );
-
 export default Footer;

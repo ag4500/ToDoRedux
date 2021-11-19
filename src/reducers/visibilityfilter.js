@@ -2,7 +2,7 @@ import {SetVisibilityFilter} from '../actions'
 const visibilityFilter = (state = 'ShowAll', action) => {
     switch (action.type) {
       case SetVisibilityFilter:
-        return action.filter
+        return action.payload
       default:
         return state
     }

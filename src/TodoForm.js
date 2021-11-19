@@ -9,30 +9,30 @@ import { FormControl } from "react-bootstrap";
 function Todo() {
   const dispatch = useDispatch();
   const select = useSelector((state) => state.todo);
-  const getId = select.todo.id;
-  const { title, desc } = select.todo;
+  const getId = select.present.todo.id;
+  const { title, desc } = select.present.todo;
   const onChange = (event) => {
     const { name, value } = event.target;
-    const updatedTodo = { ...select.todo, [name]: value };
+    const updatedTodo = { ...select.present.todo, [name]: value };
     dispatch(settodo(updatedTodo));
   };
   const onSubmit = (event) => {
     event.preventDefault();
     if (!title) return;
-    if (!select.updatingTodoIndex && select.updatingTodoIndex !== 0) {
-      dispatch(addtodo({ ...select.todo, id: new Date().getTime() }));
-      dispatch(handletoggle(!select.toggle));
+    if (!select.present.updatingTodoIndex && select.present.updatingTodoIndex !== 0) {
+      dispatch(addtodo({ ...select.present.todo, id: new Date().getTime() }));
+      dispatch(handletoggle(!select.present.toggle));
     } else {
-      dispatch(updatetodo({ ...select.todo }));
-      dispatch(handletoggle(!select.toggle));
+      dispatch(updatetodo({ ...select.present.todo }));
+      dispatch(handletoggle(!select.present.toggle));
     }
   };
   const handleHideToggle = () => {
-    dispatch(handletoggle(!select.toggle));
+    dispatch(handletoggle(!select.present.toggle));
   };
   return (
     <div className="container p-3 text-center bg-light">
-      <Modal show={select.toggle} onHide={handleHideToggle}>
+      <Modal show={select.present.toggle} onHide={handleHideToggle}>
         <Modal.Header closeButton>
           {getId === undefined ? (
             <Modal.Title>Add Todo</Modal.Title>

@@ -13,7 +13,7 @@ const getVisibleTodos = (todo, filter) => {
   }
 };
 const mapStateToProps = (state) => ({
-  todo: getVisibleTodos(state.todo.record, state.visibilityFilter),
+  todo: getVisibleTodos(state.todo.present.record, state.visibilityFilter),
 });
 const VisibleTodoList = connect(mapStateToProps)(App);
 export default VisibleTodoList;

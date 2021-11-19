@@ -34,7 +34,7 @@ export const completetodo = (payload) => ({
   type: CompleteTodo,
   payload,
 });
-export const setVisibilityFilter = (filter) => ({
+export const setVisibilityFilter = (payload) => ({
   type: SetVisibilityFilter,
-  filter
+  payload
 })

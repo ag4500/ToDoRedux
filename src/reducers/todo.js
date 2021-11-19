@@ -7,6 +7,7 @@ import {
   UpdatingtodoIndex,
   CompleteTodo,
 } from "../actions";
+import undoable from "redux-undo";
 const initialState = {
   todo: {
     title: "",
@@ -16,7 +17,7 @@ const initialState = {
   toggle: false,
   updatingTodoIndex: null,
 };
-export default function todo(state = initialState, action) {
+export function todo(state = initialState, action) {
   switch (action.type) {
     case AddTodo:
       return {
@@ -66,3 +67,5 @@ export default function todo(state = initialState, action) {
       return state;
   }
 }
+const undoableTodos = undoable(todo);
+export default undoableTodos;

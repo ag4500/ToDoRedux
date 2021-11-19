@@ -10,16 +10,19 @@ import { Table } from "react-bootstrap";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Todo from "./TodoForm";
 import Footer from "./footer";
+import UndoRedo from "./undoredo";
 function App(props) {
   const dispatch = useDispatch();
   const select = useSelector((state) => state.todo);
   const handleShowToggle = (id) => {
     if (id === undefined) {
-      dispatch(handletoggle(!select.toggle));
+      dispatch(handletoggle(!select.present.toggle));
     } else {
-      const todoIndex = select.record.findIndex((todo) => todo.id === id);
+      const todoIndex = select.present.record.findIndex(
+        (todo) => todo.id === id
+      );
       dispatch(updatingtodoindex(todoIndex));
-      dispatch(handletoggle(!select.toggle));
+      dispatch(handletoggle(!select.present.toggle));
     }
   };
   const handleDelete = (id) => {
@@ -40,7 +43,7 @@ function App(props) {
       <div className="p-3 container text-center bg-light">
         <h1 className="mb-1">Todo...</h1>
       </div>
-      {select.toggle ? <Todo /> : undefined}
+      {select.present.toggle ? <Todo /> : undefined}
       <Table striped bordered hover className="container" size="lg">
         <thead>
           <tr>
@@ -83,6 +86,7 @@ function App(props) {
         </tbody>
       </Table>
       <Footer />
+      <UndoRedo />
     </div>
   );
 }
