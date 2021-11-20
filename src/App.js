@@ -47,7 +47,7 @@ function App(props) {
       {props.todo.length === 0 ? (
         <div className="p-3 container text-center bg-light">
           <h4 className="text-danger mb-1">
-            No Todos Added Yet Please Click on Add Todo to add todo
+            No Todos Added Yet Please Click on Add Todo to add
           </h4>
         </div>
       ) : (
