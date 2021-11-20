@@ -9,7 +9,7 @@ const getVisibleTodos = (todo, filter) => {
     case "ShowActive":
       return todo.filter((t) => !t.completed);
     default:
-      throw new Error("Unknown filter: " + filter);
+      throw new Error("Filter does't exist: " + filter);
   }
 };
 const mapStateToProps = (state) => ({

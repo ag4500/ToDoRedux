@@ -1,6 +1,6 @@
 import {SetVisibilityFilter} from '../actions'
 const visibilityFilter = (state = 'ShowAll', action) => {
-    switch (action.type) {
+  switch (action.type) {
       case SetVisibilityFilter:
         return action.payload
       default:

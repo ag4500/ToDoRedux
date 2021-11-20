@@ -44,49 +44,59 @@ function App(props) {
         <h1 className="mb-1">Todo...</h1>
       </div>
       {select.present.toggle ? <Todo /> : undefined}
-      <Table striped bordered hover className="container" size="lg">
-        <thead>
-          <tr>
-            <th>S.No</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {props.todo.map((data, index) => (
-            <tr key={data.id}>
-              <td>{index + 1}</td>
-              <td>{data.title}</td>
-              <td>{data.desc}</td>
-              <Button
-                variant="outline-warning"
-                className="mx-1"
-                onClick={() => handleShowToggle(data.id)}
-              >
-                Edit Todo
-              </Button>
-              <Button
-                variant="outline-warning"
-                className="mx-1"
-                onClick={() => handleDelete(data.id)}
-              >
-                Delete Todo
-              </Button>
-              <Button variant="outline-warning">
-                complete
-                <input
-                  type="checkbox"
-                  checked={data.completed}
-                  onClick={(event) => handleComplete(event, data.id)}
-                />
-              </Button>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-      <Footer />
-      <UndoRedo />
+      {props.todo.length === 0 ? (
+        <div className="p-3 container text-center bg-light">
+          <h4 className="text-danger mb-1">
+            No Todos Added Yet Please Click on Add Todo to add todo
+          </h4>
+        </div>
+      ) : (
+        <>
+          <Table striped bordered hover className="container" size="lg">
+            <thead>
+              <tr>
+                <th>S.No</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {props.todo.map((data, index) => (
+                <tr key={data.id}>
+                  <td>{index + 1}</td>
+                  <td>{data.title}</td>
+                  <td>{data.desc}</td>
+                  <Button
+                    variant="outline-warning"
+                    className="mx-1"
+                    onClick={() => handleShowToggle(data.id)}
+                  >
+                    Edit Todo
+                  </Button>
+                  <Button
+                    variant="outline-warning"
+                    className="mx-1"
+                    onClick={() => handleDelete(data.id)}
+                  >
+                    Delete Todo
+                  </Button>
+                  <Button variant="outline-warning">
+                    complete
+                    <input
+                      type="checkbox"
+                      checked={data.completed}
+                      onClick={(event) => handleComplete(event, data.id)}
+                    />
+                  </Button>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+          <Footer />
+          <UndoRedo />
+        </>
+      )}
     </div>
   );
 }
